@@ -42,3 +42,9 @@ variable "masters_name" {
   default     = "masters"
   description = "Kops masters subdomain name in the cluster DNS zone"
 }
+
+variable "nodes_name" {
+  type        = "string"
+  default     = "nodes"
+  description = "Kops nodes subdomain name in the cluster DNS zone"
+}

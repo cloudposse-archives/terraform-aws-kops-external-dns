@@ -24,6 +24,7 @@ module "kops_external_dns" {
   name         = "external-dns"
   cluster_name = "us-east-1.cloudposse.com"
   masters_name = "masters"
+  nodes_name   = "nodes"  
 
   tags = {
     Cluster = "us-east-1.cloudposse.com"
@@ -44,6 +45,7 @@ module "kops_external_dns" {
 | `tags`             | `{}`            | Additional tags  (_e.g._ `map("Cluster","us-east-1.cloudposse.com")`             | No       |
 | `delimiter`        | `-`             | Delimiter to be used between `namespace`, `stage`, `name` and `attributes`       | No       |
 | `masters_name`     | `masters`       | Kops masters subdomain name in the cluster DNS zone                              | No       |
+| `nodes_name`       | `nodes`         | Kops nodes subdomain name in the cluster DNS zone                                | No       |
 
 
 ## Outputs
