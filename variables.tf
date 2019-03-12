@@ -37,6 +37,11 @@ variable "cluster_name" {
   description = "Kops cluster name (e.g. `us-east-1.cloudposse.com` or `cluster-1.cloudposse.com`)"
 }
 
+variable "dns_zone_names" {
+  type        = "list"
+  description = "Names of zones to manage (e.g. `us-east-1.cloudposse.com` or `cluster-1.cloudposse.com`)"
+}
+
 variable "masters_name" {
   type        = "string"
   default     = "masters"
