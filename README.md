@@ -55,17 +55,17 @@ We literally have [*hundreds of terraform modules*][terraform_modules] that are 
 
 ```hcl
 module "kops_external_dns" {
-  source         = "git::https://github.com/cloudposse/terraform-aws-kops-external-dns.git?ref=master"
+  source         = "git::https://github.com/cloudposse/terraform-aws-kops-external-dns.git?ref=tags/<release-tag>"
   namespace      = "cp"
   stage          = "prod"
   name           = "external-dns"
-  cluster_name   = "us-east-1.cloudposse.com"
-  dns_zone_names = ["us-east-1.cloudposse.com", "cloudposse.com"]
+  cluster_name   = "us-east-1.cloudposse.co"
+  dns_zone_names = ["us-east-1.cloudposse.co", "cloudposse.co"]
   masters_name   = "masters"
   nodes_name     = "nodes"
 
   tags = {
-    Cluster = "us-east-1.cloudposse.com"
+    Cluster = "us-east-1.cloudposse.co"
   }
 }
 ```
@@ -90,15 +90,15 @@ Available targets:
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
 | attributes | Additional attributes (e.g. `1`) | list | `<list>` | no |
-| cluster_name | Kops cluster name (e.g. `us-east-1.cloudposse.com` or `cluster-1.cloudposse.com`) | string | - | yes |
+| cluster_name | Kops cluster name (e.g. `us-east-1.cloudposse.co` or `cluster-1.cloudposse.co`) | string | - | yes |
 | delimiter | Delimiter to be used between `namespace`, `stage`, `name` and `attributes` | string | `-` | no |
-| dns_zone_names | Names of zones to manage (e.g. `us-east-1.cloudposse.com` or `cluster-1.cloudposse.com`) | list | - | yes |
+| dns_zone_names | Names of zones to manage (e.g. `us-east-1.cloudposse.co` or `cluster-1.cloudposse.co`) | list | - | yes |
 | masters_name | Kops masters subdomain name in the cluster DNS zone | string | `masters` | no |
 | name | Name (e.g. `external-dns`) | string | `external-dns` | no |
 | namespace | Namespace (e.g. `cp` or `cloudposse`) | string | - | yes |
 | nodes_name | Kops nodes subdomain name in the cluster DNS zone | string | `nodes` | no |
 | stage | Stage (e.g. `prod`, `dev`, `staging`) | string | - | yes |
-| tags | Additional tags (e.g. map(`Cluster`,`us-east-1.cloudposse.com`) | map | `<map>` | no |
+| tags | Additional tags (e.g. map(`Cluster`,`us-east-1.cloudposse.co`) | map | `<map>` | no |
 
 ## Outputs
 
