@@ -88,16 +88,17 @@ description: |-
 usage: |-
   ```hcl
   module "kops_external_dns" {
-    source       = "git::https://github.com/cloudposse/terraform-aws-kops-external-dns.git?ref=master"
-    namespace    = "cp"
-    stage        = "prod"
-    name         = "external-dns"
-    cluster_name = "us-east-1.cloudposse.com"
-    masters_name = "masters"
-    nodes_name   = "nodes"  
+    source         = "git::https://github.com/cloudposse/terraform-aws-kops-external-dns.git?ref=tags/<release-tag>"
+    namespace      = "cp"
+    stage          = "prod"
+    name           = "external-dns"
+    cluster_name   = "us-east-1.cloudposse.co"
+    dns_zone_names = ["us-east-1.cloudposse.co", "cloudposse.co"]
+    masters_name   = "masters"
+    nodes_name     = "nodes"
 
     tags = {
-      Cluster = "us-east-1.cloudposse.com"
+      Cluster = "us-east-1.cloudposse.co"
     }
   }
   ```

@@ -66,7 +66,8 @@ resource "aws_iam_policy" "default" {
 }
 
 data "aws_route53_zone" "default" {
-  name         = "${var.cluster_name}."
+  count        = "${length(var.dns_zone_names)}"
+  name         = "${element(var.dns_zone_names, count.index)}."
   private_zone = false
 }
 
@@ -81,7 +82,7 @@ data "aws_iam_policy_document" "default" {
     effect = "Allow"
 
     resources = [
-      "arn:aws:route53:::hostedzone/${data.aws_route53_zone.default.zone_id}",
+      "${formatlist("arn:aws:route53:::hostedzone/%s", data.aws_route53_zone.default.*.zone_id)}",
     ]
   }
 
