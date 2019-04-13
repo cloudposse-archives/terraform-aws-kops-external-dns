@@ -9,7 +9,7 @@ module "label" {
 }
 
 module "kops_metadata" {
-  source       = "git::https://github.com/cloudposse/terraform-aws-kops-metadata.git?ref=data-iam"
+  source       = "git::https://github.com/cloudposse/terraform-aws-kops-data-iam.git?ref=tags/0.1.0"
   cluster_name = "${var.cluster_name}"
 }
 
