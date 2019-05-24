@@ -79,9 +79,7 @@ data "aws_iam_policy_document" "default" {
 
     effect = "Allow"
 
-    resources = [
-      "${formatlist("arn:aws:route53:::hostedzone/%s", data.aws_route53_zone.default.*.zone_id)}",
-    ]
+    resources = "${formatlist("arn:aws:route53:::hostedzone/%s", data.aws_route53_zone.default.*.zone_id)}"
   }
 
   statement {
