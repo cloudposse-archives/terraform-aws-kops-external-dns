@@ -87,15 +87,28 @@ data "aws_iam_policy_document" "default" {
   statement {
     sid = "GrantListAccessToDomains"
 
+    # route53:ListHostedZonesByName is not needed by external-dns, but is needed by cert-manager
     actions = [
       "route53:ListHostedZones",
+      "route53:ListHostedZonesByName",
       "route53:ListResourceRecordSets",
     ]
 
     effect = "Allow"
 
-    resources = [
-      "*",
+    resources = ["*"]
+  }
+
+  # route53:GetChange is not needed by external-dns, but is needed by cert-manager
+  statement {
+    sid = "GrantGetChangeStatus"
+
+    actions = [
+      "route53:GetChange",
     ]
+
+    effect = "Allow"
+
+    resources = ["arn:aws:route53:::change/*"]
   }
 }
