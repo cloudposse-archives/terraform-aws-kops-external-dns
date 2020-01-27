@@ -21,6 +21,8 @@ resource "aws_iam_role" "default" {
     create_before_destroy = true
   }
 
+  max_session_duration = "${var.iam_role_max_session_duration}"
+
   assume_role_policy = "${data.aws_iam_policy_document.assume_role.json}"
 }
 
